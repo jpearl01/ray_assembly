@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix=$1
-java -jar bin/Trimmomatic-0.30/trimmomatic-0.30.jar \
+java -jar /opt/Trimmomatic-0.33/trimmomatic-0.33.jar \
 PE \
 -threads 16 \
 -phred33 \

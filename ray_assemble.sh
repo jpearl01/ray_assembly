@@ -2,7 +2,7 @@
 prefix=$1
 bestk=`tail -n 1 log/kmergenie.$prefix.stdout | sed -e "s/best k: //"`
 
-mpiexec -n 32 bin/Ray-v2.2.0/Ray \
+mpiexec -n 16 /opt/Ray-2.3.1/Ray \
 -k $bestk \
 -p ec_data/$prefix.paired.A.fastq ec_data/$prefix.paired.B.fastq \
 -s ec_data/$prefix.unpaired.fastq \

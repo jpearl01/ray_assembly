@@ -3,7 +3,7 @@ prefix=$1
 
 ls ec_data/$prefix.*.fastq >kmergenie/$prefix.reads.list
 
-bin/kmergenie-1.5658/kmergenie \
+/opt/kmergenie-1.6950/kmergenie \
 kmergenie/$prefix.reads.list \
 -t 32 \
 -o kmergenie/$prefix \

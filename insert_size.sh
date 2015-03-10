@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix=$1
-java -Xmx10g -jar bin/picard-tools-1.97/CollectInsertSizeMetrics.jar \
+java -Xmx10g -jar /opt/picard-tools-1.119/CollectInsertSizeMetrics.jar \
 VALIDATION_STRINGENCY=SILENT \
 HISTOGRAM_FILE="insert_size/insert_size.$prefix.pdf" \
 INPUT="bam/$prefix.sort.bam" \

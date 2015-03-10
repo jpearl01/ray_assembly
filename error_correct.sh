@@ -4,7 +4,7 @@ prefix=$1
 mean=`grep -A 1 MEDIAN_INSERT_SIZE insert_size/insert_size.$prefix.txt | tail -n 1 | awk '{print $5-202}' | cut -f 1 -d \.`
 stddev=`grep -A 1 MEDIAN_INSERT_SIZE insert_size/insert_size.$prefix.txt | tail -n 1 | awk '{print $6}' | cut -f 1 -d \.`
 
-/usr/local/bin/ErrorCorrectReads.pl \
+/opt/allpathslg/bin/ErrorCorrectReads.pl \
 PHRED_ENCODING=33 \
 PAIRED_READS_A_IN="cleandata/$prefix.unconnected.1.fq" \
 PAIRED_READS_B_IN="cleandata/$prefix.unconnected.2.fq" \

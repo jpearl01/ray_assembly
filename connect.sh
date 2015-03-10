@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix=$1
-bin/cope-v1.1.2/cope/cope \
+/opt/cope-v1.1.2/cope/cope \
 -a cleandata/$prefix.1.fq \
 -b cleandata/$prefix.2.fq \
 -o cleandata/$prefix.connected.fq \
