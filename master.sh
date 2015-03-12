@@ -97,7 +97,7 @@ READS_OUT="$ec/$prefix" \
 
 
 #Compute kmer info
-ls $ec/$prefix.allpaths-lg/data/*.fastq >$kg/$prefix.reads.list
+ls $ec/*.fastq >$kg/$prefix.reads.list
 
 /opt/kmergenie-1.6950/kmergenie \
 $kg/$prefix.reads.list \
