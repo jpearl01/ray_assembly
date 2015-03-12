@@ -39,8 +39,8 @@ asmbly=$prefix/assembly
 [ -d $asmbly ]||mkdir $asmbly
 
 #Link the files into the new rawdata directory:
-ln -s full_path_fn1 $raw/$prefix.1.fq.gz
-ln -s full_path_fn2 $raw/$prefix.2.fq.gz
+ln -s $full_path_fn1 $raw/$prefix.1.fq.gz
+ln -s $full_path_fn2 $raw/$prefix.2.fq.gz
 
 
 #Trim the reads in the input file
