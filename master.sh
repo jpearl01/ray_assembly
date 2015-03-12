@@ -4,11 +4,12 @@
 echo "This script takes two paired-end .tar.gz files and the mean and standard deviation of insert size"
 echo "and creates a de novo assembly of the reads.  Note the files should begin with the same prefix"
 echo "Usage:"
-echo "./master.sh paired_file1 paired_file2 mean_insert stdev_insert"
-echo "Example: ./master.sh paired.1.fq.gz paired.2.fq.gz 200 10"
+echo "./master.sh paired_file1 paired_file2 trimmomatic_file.fa mean_insert stdev_insert"
+echo "Example: ./master.sh paired.1.fq.gz paired.2.fq.gz trimmomatic_file.fa 200 10"
 
 filename1=$1
 filename2=$2
+trim_file=$3
 
 full_path_fn1=$(readlink -f $filename1)
 full_path_fn2=$(readlink -f $filename2)
@@ -17,8 +18,8 @@ prefix=$(basename $filename1)
 extension="${filename1##*.}"
 prefix="${prefix%%.*}"
 
-mean=$3
-stdev=$4
+mean=$4
+stdev=$5
 
 clean=$prefix/cleandata
 raw=$prefix/raw
@@ -54,7 +55,7 @@ $clean/$prefix.1.fq \
 $clean/$prefix.unpaired.1.fq \
 $clean/$prefix.2.fq \
 $clean/$prefix.unpaired.2.fq \
-ILLUMINACLIP:IlluminaContaminants.fa:2:30:10 \
+ILLUMINACLIP:$trim_file:2:30:10 \
 1>$log/trim.$prefix.stdout \
 2>$log/trim.$prefix.stderr \
 
