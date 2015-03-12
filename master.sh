@@ -19,7 +19,7 @@ extension="${filename1##*.}"
 prefix="${prefix%%.*}"
 
 mean=$4
-stdev=$5
+stddev=$5
 
 clean=$prefix/cleandata
 raw=$prefix/raw
@@ -110,7 +110,10 @@ mpiexec -n 16 /opt/Ray-2.3.1/Ray \
 -k $bestk \
 -p $ec/$prefix.paired.A.fastq $ec/$prefix.paired.B.fastq \
 -s $ec/$prefix.unpaired.fastq \
--o $asmbly/ray.k.$bestk.$prefix
+-o $asmbly/ray.k.$bestk.$prefix\
+1>$log/ray.$prefix.stdout \
+2>$log/ray.$prefix.stderr
+
 
 
 
