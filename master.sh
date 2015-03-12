@@ -7,6 +7,10 @@ echo "Usage:"
 echo "./master.sh paired_file1 paired_file2 trimmomatic_file.fa mean_insert stdev_insert"
 echo "Example: ./master.sh paired.1.fq.gz paired.2.fq.gz trimmomatic_file.fa 200 10"
 
+if [ -d "/opt/allpathslg/bin" ] && [[ ":$PATH:" != *":/opt/allpathslg/bin:"* ]]; then
+	export PATH="${PATH:+"$PATH:"}/opt/allpathslg/bin"
+fi
+
 filename1=$1
 filename2=$2
 trim_file=$3
@@ -93,7 +97,7 @@ READS_OUT="$ec/$prefix" \
 
 
 #Compute kmer info
-ls $ec/$prefix.*.fastq >$kg/$prefix.reads.list
+ls $ec/$prefix.allpaths-lg/data/*.fastq >$kg/$prefix.reads.list
 
 /opt/kmergenie-1.6950/kmergenie \
 $kg/$prefix.reads.list \
@@ -108,8 +112,8 @@ bestk=`tail -n 1 $log/kmergenie.$prefix.stdout | sed -e "s/best k: //"`
 
 mpiexec -n 16 /opt/Ray-2.3.1/Ray \
 -k $bestk \
--p $ec/$prefix.paired.A.fastq $ec/$prefix.paired.B.fastq \
--s $ec/$prefix.unpaired.fastq \
+-p $ec/$prefix.allpaths-lg/data/paired.A.fastq $ec/$prefix.allpaths-lg/data/paired.B.fastq \
+-s $ec/$prefix.allpaths-lg/data/unpaired.fastq \
 -o $asmbly/ray.k.$bestk.$prefix\
 1>$log/ray.$prefix.stdout \
 2>$log/ray.$prefix.stderr
