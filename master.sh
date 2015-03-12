@@ -15,7 +15,7 @@ full_path_fn2=$(readlink -f $filename2)
 
 prefix=$(basename $filename1)
 extension="${filename1##*.}"
-prefix="${prefix%.*}"
+prefix="${prefix%%.*}"
 
 mean=$3
 stdev=$4
