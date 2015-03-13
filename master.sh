@@ -112,9 +112,9 @@ bestk=`tail -n 1 $log/kmergenie.$prefix.stdout | sed -e "s/best k: //"`
 
 mpiexec -n 16 /opt/Ray-2.3.1/Ray \
 -k $bestk \
--p $ec/$prefix.allpaths-lg/data/paired.A.fastq $ec/$prefix.allpaths-lg/data/paired.B.fastq \
--s $ec/$prefix.allpaths-lg/data/unpaired.fastq \
--o $asmbly/ray.k.$bestk.$prefix\
+-p $ec/$prefix.paired.A.fastq $ec/$prefix.paired.B.fastq \
+-s $ec/$prefix.unpaired.fastq \
+-o $asmbly/ray.k.$bestk.$prefix \
 1>$log/ray.$prefix.stdout \
 2>$log/ray.$prefix.stderr
 
