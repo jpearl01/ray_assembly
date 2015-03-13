@@ -75,7 +75,7 @@ ILLUMINACLIP:$trim_file:2:30:10 \
 -l 10 \
 -u 100 \
 -s 33 \
--m 0 \
+#-m 0 \
 1>$log/connect.$prefix.stdout \
 2>$log/connect.$prefix.stderr
 
