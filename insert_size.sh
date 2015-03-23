@@ -8,4 +8,3 @@ OUTPUT="insert_size/insert_size.$prefix.txt" \
 ASSUME_SORTED=false \
 1>log/insert_size.metrics.$prefix.stdout \
 2>log/insert_size.metrics.$prefix.stderr
-
