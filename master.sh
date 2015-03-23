@@ -2,14 +2,28 @@
 #bin/bwa-0.7.5a/bwa index ref/NP.fa
 
 echo "This script takes two paired-end .tar.gz files and the mean and standard deviation of insert size"
-echo "and creates a de novo assembly of the reads.  Note the files should begin with the same prefix"
+echo "and creates a de novo assembly of the reads.  This will create a new directory with all the outputs"
+echo "of each step of the assembly"
 echo "Usage:"
 echo "./master.sh paired_file1 paired_file2 trimmomatic_file.fa mean_insert stdev_insert"
 echo "Example: ./master.sh paired.1.fq.gz paired.2.fq.gz trimmomatic_file.fa 200 10"
 
+echo "The number of arguments is: $#"
+
+if [ $# -ne 5 ]
+    echo "Must have 5 arguments to run this script, see above"
+    exit 0
+fi
+
 if [ -d "/opt/allpathslg/bin" ] && [[ ":$PATH:" != *":/opt/allpathslg/bin:"* ]]; then
 	export PATH="${PATH:+"$PATH:"}/opt/allpathslg/bin"
 fi
+
+#Kmergenie requires R, which is not installed in the path on the nodes, this will solve that
+if [ -d "/opt/R-3.1.3/bin/" ] && [[ ":$PATH:" != *":/opt/R-3.1.3/bin/:"* ]]; then
+	export PATH="${PATH:+"$PATH:"}/opt/allpathslg/bin"
+fi
+
 
 filename1=$1
 filename2=$2
