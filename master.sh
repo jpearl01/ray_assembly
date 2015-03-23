@@ -10,7 +10,7 @@ echo "Example: ./master.sh paired.1.fq.gz paired.2.fq.gz trimmomatic_file.fa 200
 
 echo "The number of arguments is: $#"
 
-if [ $# -ne 5 ]
+if [ $# -ne 5 ]; then
     echo "Must have 5 arguments to run this script, see above"
     exit 0
 fi
