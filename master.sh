@@ -21,7 +21,7 @@ fi
 
 #Kmergenie requires R, which is not installed in the path on the nodes, this will solve that
 if [ -d "/opt/R-3.1.3/bin/" ] && [[ ":$PATH:" != *":/opt/R-3.1.3/bin/:"* ]]; then
-	export PATH="${PATH:+"$PATH:"}/opt/allpathslg/bin"
+	export PATH="${PATH:+"$PATH:"}/opt/R-3.1.3/bin/"
 fi
 
 
