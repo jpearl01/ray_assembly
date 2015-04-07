@@ -24,6 +24,8 @@ if [ -d "/opt/R-3.1.3/bin/" ] && [[ ":$PATH:" != *":/opt/R-3.1.3/bin/:"* ]]; the
 	export PATH="${PATH:+"$PATH:"}/opt/R-3.1.3/bin/"
 fi
 
+echo $PATH
+exit 0
 
 filename1=$1
 filename2=$2
